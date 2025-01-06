@@ -61,7 +61,7 @@ def get_topsongs_api():
     }
 
     time_range = request.args.get('time_range')
-    limit = 20
+    limit = 1
     params = {
         'time_range': time_range,
         'limit': limit
@@ -72,6 +72,26 @@ def get_topsongs_api():
 
     if response.status_code == 200:
         data = response.json()
+       
+            
+
+
+
+        # for track_url in data['items']:
+        #     track_url = track_url['external_urls']['spotify']
+        #     print(track_url)
+
+
+        print("Top response keys:", data.keys())
+        print()
+        for item in data['items']:
+            print(f"Item keys:")
+            for key in item.keys():
+                print(key)
+            print()
+            
+
+
         return jsonify(data)
     else:
         return jsonify({"error": "Failed to fetch top songs", "status_code": response.status_code}), response.status_code

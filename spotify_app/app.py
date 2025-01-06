@@ -18,17 +18,22 @@ app.register_blueprint(playlist_blueprint)
 def index():
     html_content = f"""
     <html>
-
-
     <head>
+        <title>Wrapify Home</title>
         <link rel="stylesheet" type="text/css" href="{url_for('static', filename='styles.css')}">
     </head>
-    <body>
-        <div class = "main_overall_page">
-            <h1 class = "main_title"> Wrapify </h1>
-            <a class="main_bottom_logo main_bottom_hover" href='/login'>Login with Spotify here</a>  
+
+
+    <body class = "main_overall_page">
+
+        <div class = "main_header_div">
+            <h1 class = "logo"> Wrapify </h1>
+            <a class = "link" href='/login'>Login with Spotify here</a>  
         </div>
+
     </body>
+
+
     </html>
     """
     return html_content

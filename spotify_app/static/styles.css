@@ -1,25 +1,20 @@
 .main_overall_page {
   display: flex;
-  justify-content: center;
   align-items: center;
-  height: 70vh;
-  margin: 0;
-  font-family: Arial, sans-serif;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #8aaba7;
+}
+.main_header_div {
   text-align: center;
-  background-color: #f0f0f0;
+  width: auto;
+  height: auto;
 }
-
-.main_title {
-  font-size: 10em;
-  margin-bottom: 20px;
+.logo {
+  font-size: 100px;
 }
-
-.main_bottom_logo {
-  font-size: 2.5em;
-  color: #1db954; /* Spotify Green */
-  text-decoration: none;
-}
-
-.main_bottom_hover:hover {
-  text-decoration: underline;
+.link {
+  color: green;
+  font-size: 40px;
+  display: block;
 }
