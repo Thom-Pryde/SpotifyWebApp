@@ -1,8 +1,9 @@
-from flask import Flask, redirect, Response, url_for
+from flask import Flask, redirect, Response, url_for, session
 from auth import auth_blueprint
 from homepage import homepage_blueprint
 from topsongs import topsongs_blueprint
 from playlist import playlist_blueprint
+import datetime
 
 app = Flask(__name__)
 app.secret_key = 'sdfsdf7039809uf093fus'
@@ -13,30 +14,126 @@ app.register_blueprint(homepage_blueprint)
 app.register_blueprint(topsongs_blueprint)
 app.register_blueprint(playlist_blueprint)
 
-
 @app.route('/')
 def index():
+    # Check if the user is logged in (i.e., if 'access_token' is in the session)
+    logged_in = 'access_token' in session
+    if logged_in and 'expires_at' in session:
+        if datetime.datetime.now().timestamp() > session['expires_at']:
+            # token has expired-- refresh it
+            return redirect('/refresh_token')
     html_content = f"""
     <html>
     <head>
         <title>Wrapify Home</title>
         <link rel="stylesheet" type="text/css" href="{url_for('static', filename='styles.css')}">
+        <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&display=swap" rel="stylesheet">
     </head>
 
+    <body>
+        <nav class="navbar">
+            <h1 class="logo">Wrapify</h1>
+            <div class="navcontainer">
+                <ul> 
+                    <li>
+                        <a href="{ '/topsongs' if logged_in else '#'}" 
+                        class="{'nav-link disabled' if not logged_in else 'nav-link'}">Top Songs</a>
+                    </li>
 
-    <body class = "main_overall_page">
+                    <li>
+                        <a href="{ '/playlist' if logged_in else '#'}" 
+                        class="{'nav-link disabled' if not logged_in else 'nav-link'}">Playlists</a>
+                    </li>
 
-        <div class = "main_header_div">
-            <h1 class = "logo"> Wrapify </h1>
-            <a class = "link" href='/login'>Login with Spotify here</a>  
-        </div>
+                    <li>
+                        <a href="/login" class="get_started {'hidden' if logged_in else ''}">Get Started</a>
+                    </li>
 
+
+                </ul>
+            </div>
+        </nav>
+
+        <main> 
+            <div class="main_overall_page">
+                <p> Driven by a love for music, this website expands on the information Spotify doesn't show, using their APIs to provide deeper insights 
+                into artists, albums, and tracks. It's designed to give you more details and help you explore music in a whole new way.</p>
+            </div>
+        </main>
     </body>
-
-
     </html>
     """
+    
     return html_content
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#before new idea
+# @app.route('/')
+# def index():
+#     html_content = f"""
+#     <html>
+#     <head>
+#         <title>Wrapify Home</title>
+#         <link rel="stylesheet" type="text/css" href="{url_for('static', filename='styles.css')}">
+#     </head>
+
+
+#     <body class = "main_overall_page">
+
+#         <div class = "main_header_div">
+#             <h1 class = "logo"> Wrapify </h1>
+#             <a class = "link" href='/login'>Login with Spotify here</a>  
+#         </div>
+
+#     </body>
+
+
+#     </html>
+#     """
+#     return html_content
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

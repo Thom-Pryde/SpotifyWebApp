@@ -5,7 +5,6 @@ homepage_blueprint = Blueprint('homepage', __name__)
 # Homepage Route
 @homepage_blueprint.route('/homepage')
 def homepage():
-    # HTML content for the homepage
     html_content = f"""
     <html>
     <head>

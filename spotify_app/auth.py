@@ -16,6 +16,7 @@ API_BASE_URL = 'https://api.spotify.com/v1/'  # Spotify API base URL
 # Login Route (Step 1: User Login)
 @auth_blueprint.route('/login')
 def login():
+    
     # Define the scope of permissions requested from Spotify
     scope = 'playlist-read-private playlist-read-collaborative user-read-private user-library-read user-top-read user-read-playback-state user-read-recently-played'
     
@@ -58,7 +59,8 @@ def callback():
         session['refresh_token'] = token_info['refresh_token']
         session['expires_at'] = datetime.datetime.now().timestamp() + token_info['expires_in']
 
-        return redirect('/homepage')
+        return redirect('/')
+        #return redirect('/homepage')
 
 # Refresh Token Route (Handles token expiration and refresh)
 @auth_blueprint.route('/refresh_token')
@@ -82,4 +84,5 @@ def refresh_token():
     session['access_token'] = token_info['access_token']
     session['expires_at'] = datetime.datetime.now().timestamp() + token_info['expires_in']
     
-    return redirect('/homepage')
+    return redirect('/')
+    #return redirect('/homepage')
