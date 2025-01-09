@@ -26,6 +26,10 @@
   color: #030303;
   margin-bottom: 10px;
 }
+.toggle_buttons.active {
+  color: #000000;
+  background-color: #1db954;
+}
 
 /* javascript part*/
 .song_item {

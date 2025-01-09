@@ -3,6 +3,8 @@ from auth import auth_blueprint
 from topsongs import topsongs_blueprint
 from playlist import playlist_blueprint
 import datetime
+import requests
+from auth import CLIENT_ID, API_BASE_URL
 
 app = Flask(__name__)
 app.secret_key = 'sdfsdf7039809uf093fus'
@@ -12,20 +14,46 @@ app.register_blueprint(auth_blueprint)
 app.register_blueprint(topsongs_blueprint)
 app.register_blueprint(playlist_blueprint)
 
+
+
+def get_userdata():
+    headers = {
+        'Authorization': f"Bearer {session['access_token']}"
+    }
+    response = requests.get(API_BASE_URL + 'me', headers=headers)
+    user_data = response.json()
+
+    name = user_data['display_name']
+    followers = user_data['followers']['total']
+    profilepic = user_data['images'][0]['url']
+    return (name, followers, profilepic)
+
+
+
+
+
 @app.route('/')
 def index():
     print("Inside index route")
     # Check if the user is logged in (i.e., if 'access_token' is in the session)
     logged_in = 'access_token' in session
-    if logged_in and 'expires_at' in session:
-        if datetime.datetime.now().timestamp() > session['expires_at']:
+
+
+    if logged_in:
+        if 'expires_at' in session and datetime.datetime.now().timestamp() > session['expires_at']:
             # token has expired-- refresh it
             return redirect('/refresh_token')
+        name, followers, profilepic = get_userdata()
 
+    else:
+        name = None
+        followers = None
+        profilepic = None
     return render_template('homepage.html', logged_in=logged_in)
 
+
 if __name__ == "__main__":
-    print("Flaskkkkkkkkkkk app is starting")
+    print("Flask app is starting")
     app.run(debug=True)
 
 

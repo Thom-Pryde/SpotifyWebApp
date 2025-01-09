@@ -32,7 +32,7 @@ def get_topsongs_api():
     }
 
     time_range = request.args.get('time_range')
-    limit = 7
+    limit = 10
     params = {
         'time_range': time_range,
         'limit': limit

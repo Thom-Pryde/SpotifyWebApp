@@ -1,4 +1,15 @@
-// JavaScript function to fetch top songs for the selected time range
+function handleButtonClick(button, timeRange) {
+  // Remove the 'active' class from all buttons
+  const timeRangeButtons = document.querySelectorAll(".toggle_buttons");
+  timeRangeButtons.forEach((btn) => btn.classList.remove("active"));
+
+  // Add the 'active' class to the clicked button
+  button.classList.add("active");
+
+  // Fetch the songs for the selected time range
+  fetchTopSongs(timeRange);
+}
+
 function fetchTopSongs(time_range) {
   fetch(`/topsongs_api?time_range=${time_range}`)
     .then((response) => response.json())
@@ -10,6 +21,7 @@ function fetchTopSongs(time_range) {
           const duration_ms = `${formatTime(item.duration_ms / 1000)}`;
           const popularity = `${item.popularity}%`;
           const albumlink = item.external_urls.spotify;
+
           return `
           <div class="song_item">
               <div class="album_info">
@@ -22,20 +34,15 @@ function fetchTopSongs(time_range) {
                         .map((artist) => artist.name)
                         .join(", ")}</p>
                   </div>
-
               </div>
-
-
               <div class="song_extra_info">
                   <span class="album-date">Release Date: ${albumdate}</span>
                   <span class="duration">track length: ${duration_ms}</span>
                   <span class="popularity">Popularity: ${popularity} (This popularity is based on the total number of plays the track has had and how recent those plays are.)</span> 
               </div>
-
               <div class="spotify_link">
                   <a href="${albumlink}" target="_blank">Listen on Spotify</a>
               </div>
-
           </div>
         `;
         })
@@ -51,7 +58,7 @@ function fetchTopSongs(time_range) {
 }
 
 function formatTime(seconds) {
-  const minutes = Math.floor(seconds / 60); //whole number of mins
-  const remainingSeconds = Math.floor(seconds % 60); //remaining seconds
+  const minutes = Math.floor(seconds / 60);
+  const remainingSeconds = Math.floor(seconds % 60);
   return `${minutes} minutes and ${remainingSeconds} seconds`;
 }
