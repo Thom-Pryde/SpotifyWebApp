@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>User Top Songs</title>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>User Top Songs</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/stylesHP.css') }}"
+    />
+    <script
+      src="{{ url_for('static', filename='js/topsongs.js') }}"
+      defer
+    ></script>
+  </head>
+  <body>
+    <div class="top-container">
+      <h1 class="title">Your Top Songs</h1>
+      <div class="top-buttons">
+        <button onclick="fetchTopSongs('short_term')">~Last 4 Weeks</button>
+        <button onclick="fetchTopSongs('medium_term')">~Last 6 Months</button>
+        <button onclick="fetchTopSongs('long_term')">~Last Year</button>
+      </div>
+    </div>
+    <div id="top-songs"></div>
+  </body>
+</html>
+```

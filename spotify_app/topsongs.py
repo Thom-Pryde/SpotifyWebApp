@@ -57,19 +57,19 @@ def get_topsongs():
             </script>
         </head>
         <body>
-            <button onclick="fetchTopSongs('short_term')">~Last 4 Weeks</button>
-            <button onclick="fetchTopSongs('medium_term')">~Last 6 Months</button>
-            <button onclick="fetchTopSongs('long_term')">~Last Year</button>
-            <h1>Your Top Songs</h1>
+            <div class="top-container">
+                <h1 class = "title"> Your Top Songs</h1>
+                <div class="top-buttons">
+                    <button onclick="fetchTopSongs('short_term')">~Last 4 Weeks</button>
+                    <button onclick="fetchTopSongs('medium_term')">~Last 6 Months</button>
+                    <button onclick="fetchTopSongs('long_term')">~Last Year</button>
+                </div>
+            </div>
             <div id="top-songs"></div>
         </body>
     </html>
     """
     return Response(html_content, content_type='text/html; charset=utf-8')
-
-
-
-
 
 
 
