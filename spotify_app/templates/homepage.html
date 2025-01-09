@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>User Top Songs</title>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Wrapify Home</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='css/stylesHP.css') }}"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="homepagebody">
+    <nav class="navbar">
+      <div class="logo-container">
+        <h1 class="logo">Wrapify</h1>
+      </div>
+      <ul>
+        <li>
+          <a
+            href="{{ '/topsongs' if logged_in else '#' }}"
+            class="{{ 'nav-link disabled' if not logged_in else 'nav-link' }}"
+            >Top Songs</a
+          >
+        </li>
+        <li>
+          <a
+            href="{{ '/playlist' if logged_in else '#' }}"
+            class="{{ 'nav-link disabled' if not logged_in else 'nav-link' }}"
+            >Playlists</a
+          >
+        </li>
+        <li>
+          <a
+            href="/login"
+            class="get_started {{ 'hidden' if logged_in else '' }}"
+            >Get Started</a
+          >
+        </li>
+      </ul>
+    </nav>
+
+    <main>
+      <div class="main_overall_page">
+        <p></p>
+      </div>
+    </main>
+  </body>
+</html>
