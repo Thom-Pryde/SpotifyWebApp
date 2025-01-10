@@ -2,21 +2,31 @@ import datetime
 import requests
 from flask import Blueprint, redirect, request, session, jsonify
 import urllib.parse
+from dotenv import load_dotenv
+import os
+
+
+load_dotenv()  # Load the environment variables from the .env file
+CLIENT_ID = os.getenv('SPOTIFY_CLIENT_ID')
+CLIENT_SECRET = os.getenv('SPOTIFY_CLIENT_SECRET')
+REDIRECT_URI = os.getenv('SPOTIFY_REDIRECT_URI')
+
 
 auth_blueprint = Blueprint('auth', __name__)
 
-CLIENT_ID = '4fcdf09bcb424abba5cd5e16d77c2c24'
-CLIENT_SECRET = '4498f7349b5045c6a8e3b77025703e6c'
-REDIRECT_URI = 'http://localhost:5000/callback'
+#REDIRECT_URI = 'http://localhost:5000/callback'
 TOKEN_URL = 'https://accounts.spotify.com/api/token'
 AUTH_URL = 'https://accounts.spotify.com/authorize'
 API_BASE_URL = 'https://api.spotify.com/v1/'  # Spotify API base URL
 
 
+
+
+
 # Login Route (Step 1: User Login)
 @auth_blueprint.route('/login')
 def login():
-    
+    print(f"REDIRECT_URI: {REDIRECT_URI}")
     # Define the scope of permissions requested from Spotify
     scope = 'playlist-read-private playlist-read-collaborative user-read-private user-library-read user-top-read user-read-playback-state user-read-recently-played'
     

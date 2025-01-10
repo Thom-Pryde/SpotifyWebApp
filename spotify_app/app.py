@@ -4,10 +4,14 @@ from topsongs import topsongs_blueprint
 from playlist import playlist_blueprint
 import datetime
 import requests
+import os
 from auth import CLIENT_ID, API_BASE_URL
+from dotenv import load_dotenv
 
+load_dotenv()
 app = Flask(__name__)
-app.secret_key = 'sdfsdf7039809uf093fus'
+
+app.secret_key = os.getenv('FLASK_SECRET_KEY')
 
 # Register blueprints for modular routes
 app.register_blueprint(auth_blueprint)
