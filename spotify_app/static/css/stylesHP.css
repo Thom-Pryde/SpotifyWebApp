@@ -54,3 +54,17 @@ a.get_started {
   padding: 15px;
   color: white;
 }
+
+/* main section */
+
+.main_overall_page {
+  display: flex;
+}
+.left_div {
+  width: 50vw;
+}
+.right_div {
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+}

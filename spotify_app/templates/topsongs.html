@@ -19,25 +19,37 @@
   <body>
     <div class="top_container">
       <h1 class="title">Your Top Songs</h1>
-      <div class="top_buttons_container">
-        <button
-          class="toggle_buttons"
-          onclick="handleButtonClick(this, 'short_term')"
-        >
-          Recently
-        </button>
-        <button
-          class="toggle_buttons"
-          onclick="handleButtonClick(this, 'medium_term')"
-        >
-          Last Half Year
-        </button>
-        <button
-          class="toggle_buttons"
-          onclick="handleButtonClick(this, 'long_term')"
-        >
-          Last Year
-        </button>
+
+      <div class="button-split">
+        <div class="top_buttons_container">
+          <button
+            class="toggle_buttons"
+            onclick="handleButtonClick(this, 'short_term')"
+          >
+            Recently
+          </button>
+          <button
+            class="toggle_buttons"
+            onclick="handleButtonClick(this, 'medium_term')"
+          >
+            Last Half Year
+          </button>
+          <button
+            class="toggle_buttons"
+            onclick="handleButtonClick(this, 'long_term')"
+          >
+            Last Year
+          </button>
+        </div>
+        <div class="button-separator">
+          <button
+            href="/"
+            class="home_button"
+            onclick="window.location.href='/'"
+          >
+            Home
+          </button>
+        </div>
       </div>
     </div>
     <div id="top-songs"></div>

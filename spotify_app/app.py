@@ -30,6 +30,7 @@ def get_userdata():
     name = user_data['display_name']
     followers = user_data['followers']['total']
     profilepic = user_data['images'][0]['url']
+
     return (name, followers, profilepic)
 
 
@@ -53,7 +54,7 @@ def index():
         name = None
         followers = None
         profilepic = None
-    return render_template('homepage.html', logged_in=logged_in)
+    return render_template('homepage.html', logged_in = logged_in, name = name, followers = followers, profilepic = profilepic)
 
 
 if __name__ == "__main__":

@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,7 +19,7 @@
       rel="stylesheet"
     />
   </head>
-
+  <!--logged_in = logged_in, name = name, followers = followers, profilepic = profilepic-->
   <body class="homepagebody">
     <nav class="navbar">
       <div class="logo-container">
@@ -47,10 +49,28 @@
         </li>
       </ul>
     </nav>
-
+    <!--logged_in = logged_in, name = name, followers = followers, profilepic = profilepic-->
     <main>
       <div class="main_overall_page">
-        <p></p>
+        <div class = "left_div"> 
+
+        </div>
+        <div class = "right_div">
+          <div class = "right_div_content">
+            <h1 class = "welcome">Welcome to Wrapify, {{ name }}!</h1>
+            <div class = "profile_info">
+              <img src="{{ profilepic }}" alt="profile picture" class = "profile_pic">
+              <div class = "profile_text">
+                <h2 class = "profile_name">{{ name }}</h2>
+                <p class = "followers">{{ followers }} followers</p>
+              </div>
+            </div>
+
+        </div>
+      
+
+
+
       </div>
     </main>
   </body>

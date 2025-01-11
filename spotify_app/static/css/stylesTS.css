@@ -1,5 +1,37 @@
 /*buttons and title (non javac stuff)
 */
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #191414;
+}
+.button-split {
+  display: flex;
+  align-items: center;
+}
+.button-separator {
+  margin-left: auto;
+  margin-right: 60px;
+}
+.home_button {
+  background-color: #1db954;
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 80px;
+  text-align: center;
+  text-decoration: none;
+}
+.home_button:hover {
+  background-color: #14833b;
+  transform: scale(1.1);
+  transition-property: transform;
+  transition-duration: 0.1s;
+}
 .top_container {
   display: flex;
   flex-direction: column;
@@ -19,11 +51,12 @@
   cursor: pointer;
 }
 .title {
+  color: #1db954;
+  font-size: 40px;
+  text-transform: uppercase;
   display: flex;
   justify-content: center;
-  font-size: 30px;
   font-weight: bold;
-  color: #030303;
   margin-bottom: 10px;
 }
 .toggle_buttons.active {
@@ -32,17 +65,26 @@
 }
 
 /* javascript part*/
+.columns_date_duration {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .song_item {
   display: flex;
   flex-direction: column;
-  background-color: #f5f5f5;
+  background-color: #ffffff;
+  border-radius: 10px;
   padding: 10px;
   margin: 10px;
   gap: 12px;
 }
 
 .song_item:hover {
-  transform: scale(1);
+  transform: scale(1.01);
+  transition-property: transform;
+  transition-duration: 0.3s;
 }
 
 .album_info {
@@ -75,7 +117,7 @@
 }
 
 .artists {
-  color: #838383;
+  color: #696969;
 }
 
 .song_details p {
@@ -96,5 +138,11 @@
 }
 
 .spotify_link a:hover {
-  text-decoration: underline;
+  color: #14833b;
+}
+.toggle_buttons:hover {
+  background-color: #14833b;
+  transform: scale(1.1);
+  transition-property: transform;
+  transition-duration: 0.1s;
 }
