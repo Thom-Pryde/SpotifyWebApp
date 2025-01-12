@@ -25,7 +25,8 @@ a.get_started {
   color: white;
   background-color: rgb(115, 50, 205);
   font-weight: bold;
-  border-radius: 80px;
+  border-radius: 20px;
+  margin-top: 10px;
   text-align: center;
   text-decoration: none;
 }
@@ -51,6 +52,7 @@ a.get_started {
 
 .navbar a {
   text-decoration: none; /* Remove underline */
+  font-size: 25px;
   padding: 15px;
   color: white;
 }
@@ -67,4 +69,22 @@ a.get_started {
   width: 50vw;
   display: flex;
   flex-direction: column;
+}
+
+.welcome {
+  font-size: 50px;
+  font-weight: bold;
+  color: white;
+  margin: 15px;
+}
+.below-welcome {
+  font-size: 20px;
+  color: white;
+  margin: 15px;
+}
+.right_div_content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

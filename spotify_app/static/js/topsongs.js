@@ -39,9 +39,12 @@ function fetchTopSongs(time_range) {
                 <div class = "columns_date_duration">
                   <span class="album-date">Release Date: ${albumdate}</span>
                   <span class="duration">track length: ${duration_ms}</span>
+
                 </div>
-                  <span class="popularity">Popularity: ${popularity} (This popularity is based on the total number of plays the track has had and how recent those plays are.)</span> 
+                  <span class="popularity">Popularity: ${popularity} </span> 
+                  <button class= "i-button" > i </button>
               </div>
+
               <div class="spotify_link">
                   <a href="${albumlink}" target="_blank">Listen on Spotify</a>
               </div>

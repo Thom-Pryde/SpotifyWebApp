@@ -146,3 +146,22 @@ body {
   transition-property: transform;
   transition-duration: 0.1s;
 }
+
+.popularity {
+  display: flex;
+  font-size: 15px;
+  color: #777;
+}
+.i-button {
+  background-color: #1db954;
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 80px;
+  text-align: center;
+  text-decoration: none;
+}
+.i-button:hover {
+}

@@ -11,17 +11,12 @@ CLIENT_ID = os.getenv('SPOTIFY_CLIENT_ID')
 CLIENT_SECRET = os.getenv('SPOTIFY_CLIENT_SECRET')
 REDIRECT_URI = os.getenv('SPOTIFY_REDIRECT_URI')
 
-
 auth_blueprint = Blueprint('auth', __name__)
 
 #REDIRECT_URI = 'http://localhost:5000/callback'
 TOKEN_URL = 'https://accounts.spotify.com/api/token'
 AUTH_URL = 'https://accounts.spotify.com/authorize'
 API_BASE_URL = 'https://api.spotify.com/v1/'  # Spotify API base URL
-
-
-
-
 
 # Login Route (Step 1: User Login)
 @auth_blueprint.route('/login')
