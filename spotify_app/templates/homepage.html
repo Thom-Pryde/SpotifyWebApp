@@ -34,6 +34,18 @@
           >
         </li>
 
+
+        
+        <li>
+          <a
+            href="{{ '/findlyrics' if logged_in else '#' }}"
+            class="{{ 'nav-link disabled' if not logged_in else 'nav-link' }}"
+            >Lyrics</a
+          >
+        </li>
+
+
+
         <li>
           <a
             href="{{ '/artistsearch' if logged_in else '#' }}"
@@ -51,6 +63,7 @@
           >
         </li>
         <!-- <li>
+          
           <a
             href="/login"
             class="get_started {{ 'hidden' if logged_in else '' }}"
@@ -58,6 +71,12 @@
           >
         </li> -->
       </ul>
+    
+      <a
+      href="{{ '/logout' if logged_in else '#' }}"
+      class="{{ 'nav-link disabled' if not logged_in else 'nav-link' }}"
+      >Log Out</a>
+
     </nav>
     <!--logged_in = logged_in, name = name, followers = followers, profilepic = profilepic-->
     <main>

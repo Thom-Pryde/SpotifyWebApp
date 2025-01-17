@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Search</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/stylesFL.css') }}"
+    />
+    <script
+      src="{{ url_for('static', filename='js/findlyrics.js') }}"
+      defer
+    ></script>
+  </head>
+  <body>
+    <div class="top-container">
+      <h1 class="Title">Your Live Song Lyrics</h1>
+      <div class="button-container">
+        <button id="Reset-Button">Reset</button>
+      </div>
+    </div>
+
+    <div id="lyrics-Container"></div>
+  </body>
+</html>

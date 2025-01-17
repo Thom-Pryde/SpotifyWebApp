@@ -11,6 +11,9 @@ CLIENT_ID = os.getenv('SPOTIFY_CLIENT_ID')
 CLIENT_SECRET = os.getenv('SPOTIFY_CLIENT_SECRET')
 REDIRECT_URI = os.getenv('SPOTIFY_REDIRECT_URI')
 
+GENIUS_CLIENT_ACCESS_TOKEN = os.getenv('GENIUS_CLIENT_ACCESS_TOKEN')
+GENIUS_CLIENT_ID = os.getenv('GENIUS_CLIENT_ID')
+
 auth_blueprint = Blueprint('auth', __name__)
 
 #REDIRECT_URI = 'http://localhost:5000/callback'
@@ -23,7 +26,7 @@ API_BASE_URL = 'https://api.spotify.com/v1/'  # Spotify API base URL
 def login():
     print(f"REDIRECT_URI: {REDIRECT_URI}")
     # Define the scope of permissions requested from Spotify
-    scope = 'playlist-read-private playlist-read-collaborative user-read-private user-library-read user-top-read user-read-playback-state user-read-recently-played'
+    scope = 'playlist-read-private playlist-read-collaborative user-read-private user-library-read user-top-read user-read-playback-state user-read-recently-played user-read-currently-playing'
     
     # Build the authorization URL with the necessary parameters
     params = {
@@ -67,7 +70,7 @@ def callback():
         return redirect('/')
         #return redirect('/homepage')
 
-# Refresh Token Route (Handles token expiration and refresh)
+#Refresh Token Route (Handles token expiration and refresh)
 @auth_blueprint.route('/refresh_token')
 def refresh_token():
     # If the refresh token is not in the session, redirect to login
@@ -91,3 +94,9 @@ def refresh_token():
     
     return redirect('/')
     #return redirect('/homepage')
+
+
+@auth_blueprint.route('/logout')
+def logout():
+    session.clear()
+    return redirect('/')   

@@ -3,6 +3,7 @@ from auth import auth_blueprint
 from topsongs import topsongs_blueprint
 from playlist import playlist_blueprint
 from artistsearch import artistsearch_blueprint
+from findlyrics import findlyrics_blueprint
 import datetime
 import requests
 import os
@@ -19,6 +20,8 @@ app.register_blueprint(auth_blueprint)
 app.register_blueprint(topsongs_blueprint)
 app.register_blueprint(playlist_blueprint)
 app.register_blueprint(artistsearch_blueprint)
+app.register_blueprint(findlyrics_blueprint)
+
 
 
 
