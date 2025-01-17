@@ -88,3 +88,6 @@ a.get_started {
   justify-content: center;
   align-items: center;
 }
+.profile_pic {
+  border-radius: 50%;
+}

@@ -78,3 +78,7 @@ body {
   transition-property: transform;
   transition-duration: 0.1s;
 }
+.button-container {
+  display: flex;
+  gap: 15px;
+}
