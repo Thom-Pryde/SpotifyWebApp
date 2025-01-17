@@ -4,13 +4,24 @@
   color: white;
   padding: 20px;
 }
-#Reset-Button {
+/* #Reset-Button {
   background-color: #1db954;
   border: 1px solid #040404;
   border-radius: 20px;
   color: rgb(255, 255, 255);
   font-weight: bold;
   cursor: pointer;
+} */
+#Reset-Button {
+  background-color: #1db954;
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 80px;
+  text-align: center;
+  text-decoration: none;
 }
 
 .Title {
@@ -49,4 +60,21 @@ body {
   text-align: center;
   line-height: 1.5;
   color: white;
+}
+.home_button {
+  background-color: #1db954;
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 80px;
+  text-align: center;
+  text-decoration: none;
+}
+.home_button:hover {
+  background-color: #14833b;
+  transform: scale(1.1);
+  transition-property: transform;
+  transition-duration: 0.1s;
 }
