@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Search</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/stylesAS.css') }}"
+    />
+    <script
+      src="{{ url_for('static', filename='js/artistsearch.js') }}"
+      defer
+    ></script>
+  </head>
+  <body>
+    <div class="search_container">
+      <div class="search_bar">
+        <input
+          type="text"
+          id="search"
+          placeholder="Search Songs/Artists"
+        />
+        <button id="search_button">Search</button>
+      </div>
+      <div class="artitssongsearchdiv"></div>
+    </div>
+  </body>
+</html>

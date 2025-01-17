@@ -23,7 +23,7 @@ function fetchTopSongs(time_range) {
           const albumlink = item.external_urls.spotify;
 
           return `
-          <div class="song_item">
+          <div class="song_item"> 
               <div class="album_info">
                   <img class="album_img" src="${albumpic}" alt="Album cover">
 
@@ -36,18 +36,25 @@ function fetchTopSongs(time_range) {
                   </div>
               </div>
               <div class="song_extra_info">
+
                 <div class = "columns_date_duration">
                   <span class="album-date">Release Date: ${albumdate}</span>
                   <span class="duration">track length: ${duration_ms}</span>
-
                 </div>
+                
+                <div class = "columns_popularity">
                   <span class="popularity">Popularity: ${popularity} </span> 
-                  <button class= "i-button" > i </button>
-              </div>
+                  <div class = "i-button-container">   
+                    <button class= "i-button" > i </button>
+                    <span class = "i-show"> The popularity is calculated by algorithm and is based, in the most part, on the total number of plays the track has had and how recent those plays are. </span>
+                  </div>
+                </div>
 
-              <div class="spotify_link">
-                  <a href="${albumlink}" target="_blank">Listen on Spotify</a>
+
               </div>
+                <div class="spotify_link">
+                  <a href="${albumlink}" target="_blank">Listen on Spotify</a>
+                </div>
           </div>
         `;
         })

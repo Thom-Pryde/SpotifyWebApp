@@ -5,6 +5,15 @@ from auth import API_BASE_URL
 
 playlist_blueprint = Blueprint('playlist', __name__)
 
+
+
+
+
+
+
+
+
+
 # Playlist Route (Fetches the user's playlists)
 @playlist_blueprint.route('/playlist')
 def get_playlist():

@@ -2,6 +2,7 @@ from flask import Flask, redirect, Response, url_for, session, render_template
 from auth import auth_blueprint
 from topsongs import topsongs_blueprint
 from playlist import playlist_blueprint
+from artistsearch import artistsearch_blueprint
 import datetime
 import requests
 import os
@@ -17,6 +18,7 @@ app.secret_key = os.getenv('FLASK_SECRET_KEY')
 app.register_blueprint(auth_blueprint)
 app.register_blueprint(topsongs_blueprint)
 app.register_blueprint(playlist_blueprint)
+app.register_blueprint(artistsearch_blueprint)
 
 
 

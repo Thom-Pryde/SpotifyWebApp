@@ -1,0 +1,42 @@
+/*Search bar */
+.search_bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  gap: 5px;
+}
+.search_button {
+}
+
+/*main area */
+.search_container {
+  display: flex;
+  flex-direction: column;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+.artitssongsearch {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.search-item {
+  display: flex;
+  flex-direction: column;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.search-item img {
+  width: 100px;
+  height: 100px;
+}
+.inside-item {
+  display: flex;
+  flex-direction: column;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  gap: 5px;
+}
