@@ -23,9 +23,9 @@ const lyricload = async () => {
       `;
     }
   } catch (error) {
-    console.error("Error fetching search results:", error);
+    console.error("Error fetching search results no lyrics available?:", error);
     document.querySelector("#lyrics-Container").innerHTML =
-      "Error loading results.";
+      "Could Not Find Lyrics, Press The Reset Button For Your Next Song .";
   }
 };
 

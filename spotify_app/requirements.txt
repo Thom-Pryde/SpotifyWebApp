@@ -1,5 +1,6 @@
 Flask==2.2.2
 requests==2.28.2
+Werkzeug==2.2.2
 #These two libraries are what your application depends on:
 #Flask - The web framework you're using for your app.
 #requests - This library is used to make HTTP requests to the Spotify API.

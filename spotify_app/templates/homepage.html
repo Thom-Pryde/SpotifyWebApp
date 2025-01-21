@@ -3,6 +3,11 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    
+    
     <meta charset="UTF-8" />
     <meta
       name="viewport"
@@ -11,13 +16,12 @@
     <title>Wrapify Home</title>
     <link
       rel="stylesheet"
-      type="text/css"
       href="{{ url_for('static', filename='css/stylesHP.css') }}"
     />
-    <link
+    <!-- <link
       href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&display=swap"
       rel="stylesheet"
-    />
+    /> -->
   </head>
   <!--logged_in = logged_in, name = name, followers = followers, profilepic = profilepic-->
   <body class="homepagebody">
@@ -54,6 +58,16 @@
           >
         </li>
 
+        <li>
+          <a
+          href="{{ '/logout' if logged_in else '#' }}"
+          class="{{ 'nav-link disabled' if not logged_in else 'nav-link' }}"
+          >Log Out</a>
+    
+
+        </li>
+      
+
 
         <!-- <li>
           <a
@@ -72,27 +86,27 @@
         </li> -->
       </ul>
     
-      <a
+      <!-- <a
       href="{{ '/logout' if logged_in else '#' }}"
       class="{{ 'nav-link disabled' if not logged_in else 'nav-link' }}"
-      >Log Out</a>
+      >Log Out</a> -->
 
     </nav>
     <!--logged_in = logged_in, name = name, followers = followers, profilepic = profilepic-->
     <main>
       <div class="main_overall_page">
-        <div class = "left_div"> 
+        <!-- <div class = "left_div"> 
 
-        </div>
+        </div> -->
         <div class = "right_div">
           {% if logged_in %}
             <div class = "right_div_content">
               <h1 class = "welcome">Welcome to Wrapify, {{ name }}!</h1>
               <div class = "profile_info">
-              <img src="{{ profilepic }}" alt="profile picture" class = "profile_pic">
+              <img src="{{ profilepic }}" class = "profile_pic">
              <div class = "profile_text">
-              <!-- <h2 class = "profile_name">{{ name }}</h2> -->
-                <!-- <p class = "followers">{{ followers }} followers</p> -->
+              <h2 class = "profile_name">{{ name }}</h2>
+              <p class = "followers">{{ followers }} followers</p>
               </div>
             </div>
         </div>
@@ -103,9 +117,6 @@
           <p class ="below-welcome">Please <a href="/login">log in</a> to see your profile and playlists.</p>
         </div>
       {% endif %}
-
-
-
       </div>
     </main>
   </body>
