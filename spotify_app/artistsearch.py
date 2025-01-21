@@ -33,7 +33,7 @@ def get_artistsearch_api():
     if not search_query:
         return jsonify({"error": "Query parameter is required"}), 400
     
-    limit = 4
+    limit = 10
     params = {
         "q": search_query,   
         'limit': limit,
