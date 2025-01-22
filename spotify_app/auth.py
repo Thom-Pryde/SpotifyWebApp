@@ -24,7 +24,7 @@ API_BASE_URL = 'https://api.spotify.com/v1/'  # Spotify API base URL
 # Login Route (Step 1: User Login)
 @auth_blueprint.route('/login')
 def login():
-    print(f"REDIRECT_URI: {REDIRECT_URI}")
+    # print(f"REDIRECT_URI: {REDIRECT_URI}")
     # Define the scope of permissions requested from Spotify
     scope = 'playlist-read-private playlist-read-collaborative user-read-private user-library-read user-top-read user-read-playback-state user-read-recently-played user-read-currently-playing'
     

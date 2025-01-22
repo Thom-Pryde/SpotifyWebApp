@@ -2,12 +2,12 @@ const lyricload = async () => {
   try {
     const response = await fetch("/findlyrics_api");
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
     const track_name = data.track_name;
     const artist_name = data.artist_name;
     let lyrics = data.lyrics;
     lyrics = lyrics.replace(/\n/g, "<br>");
-    console.log(lyrics);
+    // console.log(lyrics);
     if (data.error) {
       document.querySelector(
         "#lyrics-Container"

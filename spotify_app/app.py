@@ -68,7 +68,8 @@ def index():
 
 if __name__ == "__main__":
     # print("Flask app is starting")
-    app.run(debug=True)
+    # app.run(debug=True)
+     app.run()
 
 
 
