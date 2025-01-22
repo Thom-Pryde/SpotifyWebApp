@@ -8,6 +8,7 @@ import datetime
 import requests
 import os
 from spotify_app.auth import CLIENT_ID, API_BASE_URL
+import logging
 # from dotenv import load_dotenv
 if os.getenv('FLASK_ENV') != 'production':
     from dotenv import load_dotenv
@@ -27,30 +28,32 @@ app.register_blueprint(findlyrics_blueprint)
 
 
 def get_userdata():
+    # print(session['access_token'])
+    if 'access_token' not in session:
+        logging.error('no acess token in session')
+        return None, None, None, None, None
+    
     headers = {
         'Authorization': f"Bearer {session['access_token']}"
     }
- 
-    try:
-        response = requests.get(API_BASE_URL + 'me', headers=headers)
-        user_data = response.json()
-    except requests.exceptions.RequestException as e:
-        print(e)
-    
 
     response = requests.get(API_BASE_URL + 'me', headers=headers)
-    user_data = response.json()
-    country = user_data['country']
-    link = user_data['external_urls']['spotify']
-    name = user_data['display_name']
-    followers = user_data['followers']['total']
-    profilepic = user_data['images'][0]['url']
-    
+    logging.info(f"Spotify API Status: {response.status_code}, Response: {response.text}")
 
-    return ( country,link, name, followers, profilepic)
-
-
-
+    if response.status_code == 401:
+        logging.error('Acess token expired or just invalid')
+        return None, None, None, None
+    try:
+        user_data = response.json()
+        country = user_data['country']
+        link = user_data['external_urls']['spotify']
+        name = user_data['display_name']
+        followers = user_data['followers']['total']
+        profilepic = user_data['images'][0]['url'] if user_data['images'] else None
+        return ( country,link, name, followers, profilepic)
+    except Exception as e:
+        logging.error(f"Error parsing user data: {e}")
+        return None, None, None, None, None
 
 
 @app.route('/')
@@ -58,7 +61,7 @@ def index():
     # print("Inside index route")
     # Check if the user is logged in (i.e., if 'access_token' is in the session)
     logged_in = 'access_token' in session
-
+    
 
     if logged_in:
         if 'expires_at' in session and datetime.datetime.now().timestamp() > session['expires_at']:
