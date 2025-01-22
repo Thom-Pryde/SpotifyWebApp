@@ -30,6 +30,14 @@ def get_userdata():
     headers = {
         'Authorization': f"Bearer {session['access_token']}"
     }
+ 
+    try:
+        response = requests.get(API_BASE_URL + 'me', headers=headers)
+        user_data = response.json()
+    except requests.exceptions.RequestException as e:
+        print(e)
+    
+
     response = requests.get(API_BASE_URL + 'me', headers=headers)
     user_data = response.json()
     country = user_data['country']
