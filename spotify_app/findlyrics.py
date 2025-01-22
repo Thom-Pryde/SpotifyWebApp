@@ -47,3 +47,18 @@ def findlyrics_api():
 
 
 
+@findlyrics_blueprint.route('/test_genius_api')
+def test_genius_api():
+    try:
+        headers = {'Authorization': f"Bearer {GENIUS_CLIENT_ACCESS_TOKEN}"}
+        response = requests.get(
+            "https://api.genius.com/search",
+            headers=headers,
+            params={"q": "Hello Adele"}
+        )
+        response.raise_for_status()
+        return jsonify(response.json())
+    except requests.exceptions.HTTPError as e:
+        return jsonify({'error': f"HTTPError: {str(e)}"}), 500
+    except Exception as e:
+        return jsonify({'error': f"Unexpected error: {str(e)}"}), 500
