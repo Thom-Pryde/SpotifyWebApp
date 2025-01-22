@@ -31,12 +31,14 @@ def get_userdata():
     }
     response = requests.get(API_BASE_URL + 'me', headers=headers)
     user_data = response.json()
-
+    country = user_data['country']
+    link = user_data['external_urls']['spotify']
     name = user_data['display_name']
     followers = user_data['followers']['total']
     profilepic = user_data['images'][0]['url']
+    
 
-    return (name, followers, profilepic)
+    return ( country,link, name, followers, profilepic)
 
 
 
@@ -53,13 +55,15 @@ def index():
         if 'expires_at' in session and datetime.datetime.now().timestamp() > session['expires_at']:
             # token has expired-- refresh it
             return redirect('/refresh_token')
-        name, followers, profilepic = get_userdata()
+        country, link, name, followers, profilepic = get_userdata()
 
     else:
+        country = None
+        link = None
         name = None
         followers = None
         profilepic = None
-    return render_template('homepage.html', logged_in = logged_in, name = name, followers = followers, profilepic = profilepic)
+    return render_template('homepage.html', logged_in = logged_in, country = country, link = link, name = name, followers = followers, profilepic = profilepic)
 
 
 if __name__ == "__main__":

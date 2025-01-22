@@ -61,8 +61,8 @@
         <li>
           <a
           href="{{ '/logout' if logged_in else '#' }}"
-          class="{{ 'nav-link disabled' if not logged_in else 'nav-link' }}"
-          >Log Out</a>
+          class="nav-link {{ 'hidden' if not logged_in else '' }}"
+        >Log Out</a>
     
 
         </li>
@@ -98,7 +98,7 @@
         <!-- <div class = "left_div"> 
 
         </div> -->
-        <div class = "right_div">
+        <div class="right_div {% if logged_in %}right-aligned{% endif %}">
           {% if logged_in %}
             <div class = "right_div_content">
               <h1 class = "welcome">Welcome to Wrapify, {{ name }}!</h1>
@@ -107,14 +107,19 @@
              <div class = "profile_text">
               <h2 class = "profile_name">{{ name }}</h2>
               <p class = "followers">{{ followers }} followers</p>
+              <p class = "country">Location: {{ country }} </p>
+              <a href = "{{link}}" class = "spotifylink" target="_blank">View Profile</a>
+              
               </div>
             </div>
         </div>
       
         {% else %}
-        <div class="right_div_content">
-          <h1 class="welcome">Welcome to Wrapify!</h1>
-          <p class ="below-welcome">Please <a href="/login">log in</a> to see your profile and playlists.</p>
+        <div class="welcome-container">
+          <h1 class="welcome">Your Music Journey!</h1>
+          <h3 class="welcome-text">
+            Explore your top songs, find lyrics for what you're listening to right now, and discover new tracks to add to your playlists. </h3>
+          <a class ="below-welcome"href="/login">Get Started</a> 
         </div>
       {% endif %}
       </div>

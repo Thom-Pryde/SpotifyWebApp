@@ -16,10 +16,11 @@ body {
   margin-right: 60px;
 }
 .home_button {
+  font-size: 20px;
   background-color: #1db954;
   color: rgb(0, 0, 0);
   border: none;
-  padding: 10px 20px;
+  padding: 15px 25px;
   font-weight: bold;
   cursor: pointer;
   border-radius: 80px;
@@ -33,26 +34,32 @@ body {
   transition-duration: 0.1s;
 }
 .top_container {
+  font-family: "Roboto", serif;
+  font-optical-sizing: auto;
+  border-bottom: 2px solid #1db954;
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
+  padding-bottom: 20px;
 }
 .top_buttons_container {
   display: flex;
   gap: 25px;
+  padding-left: 25px;
 }
 .top_buttons_container button {
-  padding: 10px 20px;
+  padding: 15px 25px;
   border: 1px solid #040404;
   border-radius: 50px;
   background-color: #8a8a8a;
   color: rgb(6, 6, 6);
   font-weight: bold;
+  font-size: 20px;
   cursor: pointer;
 }
 .title {
   color: #1db954;
-  font-size: 40px;
+  font-size: 55px;
   text-transform: uppercase;
   display: flex;
   justify-content: center;
@@ -146,7 +153,10 @@ body {
   transition-property: transform;
   transition-duration: 0.1s;
 }
-
+.toggle_buttons {
+  font-family: "Roboto", serif;
+  font-optical-sizing: auto;
+}
 .popularity {
   display: flex;
   font-size: 15px;

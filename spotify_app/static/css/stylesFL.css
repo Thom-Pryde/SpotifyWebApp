@@ -16,12 +16,13 @@
   background-color: #1db954;
   color: rgb(0, 0, 0);
   border: none;
-  padding: 10px 20px;
+  padding: 15px 25px;
   font-weight: bold;
   cursor: pointer;
   border-radius: 80px;
   text-align: center;
   text-decoration: none;
+  font-size: 20px;
 }
 
 .Title {
@@ -29,10 +30,16 @@
   padding: 15px;
   text-align: center;
   margin: 0;
-  font-size: 24px;
+  font-size: 55px;
+  padding-right: 50px;
 }
-
+button {
+  font-family: "Roboto", serif;
+  font-optical-sizing: auto;
+}
 .top-container {
+  font-family: "Roboto", serif;
+  font-optical-sizing: auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -60,17 +67,19 @@ body {
   text-align: center;
   line-height: 1.5;
   color: white;
+  padding-bottom: 20px;
 }
 .home_button {
   background-color: #1db954;
   color: rgb(0, 0, 0);
   border: none;
-  padding: 10px 20px;
+  padding: 15px 25px;
   font-weight: bold;
   cursor: pointer;
   border-radius: 80px;
   text-align: center;
   text-decoration: none;
+  font-size: 20px;
 }
 .home_button:hover {
   background-color: #14833b;
