@@ -5,8 +5,9 @@ import urllib.parse
 from dotenv import load_dotenv
 import os
 
-
-load_dotenv()  # Load the environment variables from the .env file
+if os.getenv('FLASK_ENV') != 'production':
+    load_dotenv()  # Load environment variables from the .env file
+# load_dotenv()  # Load the environment variables from the .env file
 CLIENT_ID = os.getenv('SPOTIFY_CLIENT_ID')
 CLIENT_SECRET = os.getenv('SPOTIFY_CLIENT_SECRET')
 REDIRECT_URI = os.getenv('SPOTIFY_REDIRECT_URI')
