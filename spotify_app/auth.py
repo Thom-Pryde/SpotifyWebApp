@@ -2,10 +2,11 @@ import datetime
 import requests
 from flask import Blueprint, redirect, request, session, jsonify
 import urllib.parse
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 import os
 
 if os.getenv('FLASK_ENV') != 'production':
+    from dotenv import load_dotenv
     load_dotenv()  # Load environment variables from the .env file
 # load_dotenv()  # Load the environment variables from the .env file
 CLIENT_ID = os.getenv('SPOTIFY_CLIENT_ID')

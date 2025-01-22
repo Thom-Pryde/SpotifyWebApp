@@ -8,8 +8,9 @@ import datetime
 import requests
 import os
 from spotify_app.auth import CLIENT_ID, API_BASE_URL
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 if os.getenv('FLASK_ENV') != 'production':
+    from dotenv import load_dotenv
     load_dotenv()  # Load environment variables from the .env file
 app = Flask(__name__)
 
