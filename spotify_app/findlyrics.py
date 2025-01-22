@@ -2,7 +2,7 @@ import datetime
 import requests
 from flask import Blueprint, jsonify, request, Response, redirect, session, render_template
 import urllib.parse
-from auth import API_BASE_URL,GENIUS_CLIENT_ACCESS_TOKEN,GENIUS_CLIENT_ID
+from spotify_app.auth import API_BASE_URL,GENIUS_CLIENT_ACCESS_TOKEN,GENIUS_CLIENT_ID
 import lyricsgenius as lg
 
 findlyrics_blueprint = Blueprint('findlyrics', __name__)

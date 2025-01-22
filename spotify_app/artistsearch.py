@@ -2,7 +2,7 @@ import datetime
 import requests
 from flask import Blueprint, jsonify, request, Response, redirect, session, render_template
 import urllib.parse
-from auth import CLIENT_ID, API_BASE_URL
+from spotify_app.auth import CLIENT_ID, API_BASE_URL
 
 artistsearch_blueprint = Blueprint('artistsearch', __name__)
 

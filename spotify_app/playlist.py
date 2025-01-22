@@ -1,7 +1,7 @@
 import datetime
 import requests
 from flask import Blueprint, Response, redirect, session
-from auth import API_BASE_URL
+from spotify_app.auth import API_BASE_URL
 
 playlist_blueprint = Blueprint('playlist', __name__)
 

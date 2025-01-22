@@ -1,13 +1,13 @@
 from flask import Flask, redirect, Response, url_for, session, render_template
-from auth import auth_blueprint
-from topsongs import topsongs_blueprint
-from playlist import playlist_blueprint
-from artistsearch import artistsearch_blueprint
-from findlyrics import findlyrics_blueprint
+from spotify_app.auth import auth_blueprint
+from spotify_app.topsongs import topsongs_blueprint
+from spotify_app.playlist import playlist_blueprint
+from spotify_app.artistsearch import artistsearch_blueprint
+from spotify_app.findlyrics import findlyrics_blueprint
 import datetime
 import requests
 import os
-from auth import CLIENT_ID, API_BASE_URL
+from spotify_app.auth import CLIENT_ID, API_BASE_URL
 from dotenv import load_dotenv
 if os.getenv('FLASK_ENV') != 'production':
     load_dotenv()  # Load environment variables from the .env file
