@@ -9,8 +9,8 @@ import requests
 import os
 from auth import CLIENT_ID, API_BASE_URL
 from dotenv import load_dotenv
-
-load_dotenv()
+if os.getenv('FLASK_ENV') != 'production':
+    load_dotenv()  # Load environment variables from the .env file
 app = Flask(__name__)
 
 app.secret_key = os.getenv('FLASK_SECRET_KEY')
