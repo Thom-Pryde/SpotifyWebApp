@@ -3,6 +3,9 @@
   overflow-y: auto;
   color: white;
   padding: 20px;
+  font-size: 25px;
+  font-family: "Roboto", serif;
+  font-optical-sizing: auto;
 }
 /* #Reset-Button {
   background-color: #1db954;
@@ -45,6 +48,9 @@ button {
   align-items: center;
   border-bottom: 2px solid #1db954;
   height: 100px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 body {
   font-family: Arial, sans-serif;
