@@ -46,7 +46,7 @@ def get_userdata():
 
 @app.route('/')
 def index():
-    print("Inside index route")
+    # print("Inside index route")
     # Check if the user is logged in (i.e., if 'access_token' is in the session)
     logged_in = 'access_token' in session
 
@@ -67,7 +67,7 @@ def index():
 
 
 if __name__ == "__main__":
-    print("Flask app is starting")
+    # print("Flask app is starting")
     app.run(debug=True)
 
 
