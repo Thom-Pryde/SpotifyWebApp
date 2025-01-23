@@ -45,7 +45,7 @@ def get_userdata():
     }
 
     response = requests.get(API_BASE_URL + 'me', headers=headers)
-    logging.info(f"Spotify API Status: {response.status_code}, Response: {response.text}")
+    #logging.info(f"Spotify API Status: {response.status_code}, Response: {response.text}")
 
     if response.status_code == 401:
         logging.error('Acess token expired or just invalid')

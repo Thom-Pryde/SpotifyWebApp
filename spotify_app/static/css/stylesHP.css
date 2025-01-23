@@ -2,7 +2,8 @@
   background-color: rgb(47, 47, 47);
   color: white;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
   /* border: 2px solid rgb(115, 50, 205); */
   border: 2px solid rgb(0, 0, 0);
   position: sticky;
@@ -135,11 +136,16 @@ a.get_started {
   width: 100%;
 }
 .profile_pic {
-  border-radius: 50%;
-  width: 180px;
-  height: 180px;
-  object-fit: cover;
-  border: 3px solid #1db954;
+  border-radius: 4px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+
+  /* border-radius: 50%; */
+  /* width: 180px;
+  height: 180px; */
+  /* object-fit: cover; */
+  /* border: 3px solid #1db954; */
   margin-bottom: 15px;
 }
 .profile_info {
@@ -172,4 +178,13 @@ body {
   color: #ccc; /* Gray out the text */
   text-decoration: none;
   cursor: not-allowed;
+}
+
+.spot-logo {
+  justify-self: center;
+  padding-right: 30px;
+  margin: 0;
+}
+.spotify-navbar-logo {
+  width: 100px;
 }

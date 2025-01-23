@@ -37,60 +37,26 @@
             >Top Songs</a
           >
         </li>
-
-
-        
         <li>
           <a
             href="{{ '/findlyrics' if logged_in else '#' }}"
             class="{{ 'nav-link disabled' if not logged_in else 'nav-link' }}"
-            >Lyrics</a
-          >
+            >Lyrics</a>
         </li>
-
-
-
         <li>
-          <a
-            href="{{ '/artistsearch' if logged_in else '#' }}"
-            class="{{ 'nav-link disabled' if not logged_in else 'nav-link' }}"
-            >Search</a
-          >
+          <a href="{{ '/artistsearch' if logged_in else '#' }}"
+            class="{{ 'nav-link disabled' if not logged_in else 'nav-link' }}">Search</a>
         </li>
-
         <li>
-          <a
-          href="{{ '/logout' if logged_in else '#' }}"
-          class="nav-link {{ 'hidden' if not logged_in else '' }}"
-        >Log Out</a>
-    
-
+          <a href="{{ '/logout' if logged_in else '#' }}"
+          class="nav-link {{ 'hidden' if not logged_in else '' }}">Log Out</a>
         </li>
-      
-
-
-        <!-- <li>
-          <a
-            href="{{ '/playlist' if logged_in else '#' }}"
-            class="{{ 'nav-link disabled' if not logged_in else 'nav-link' }}"
-            >Playlists</a
-          >
-        </li> -->
-        <!-- <li>
-          
-          <a
-            href="/login"
-            class="get_started {{ 'hidden' if logged_in else '' }}"
-            >Get Started</a
-          >
-        </li> -->
       </ul>
-    
-      <!-- <a
-      href="{{ '/logout' if logged_in else '#' }}"
-      class="{{ 'nav-link disabled' if not logged_in else 'nav-link' }}"
-      >Log Out</a> -->
-
+      <div class= "spot-logo" 
+        <a href="https://www.spotify.com" target="_blank">
+          <img src="{{ url_for('static', filename='images/Full_Logo_Green_RGB.svg') }}" alt="Spotify Logo" class="spotify-navbar-logo">
+        </a>
+      </div>
     </nav>
     <!--logged_in = logged_in, name = name, followers = followers, profilepic = profilepic-->
     <main>
@@ -103,13 +69,14 @@
             <div class = "right_div_content">
               <h1 class = "welcome">Welcome to Wrapify, {{ name }}!</h1>
               <div class = "profile_info">
-              <img src="{{ profilepic }}" class = "profile_pic">
+              <img src="{{ profilepic }}" class = "profile_pic" alt = "Profile Picture">
              <div class = "profile_text">
               <h2 class = "profile_name">{{ name }}</h2>
               <p class = "followers">{{ followers }} followers</p>
               <p class = "country">Location: {{ country }} </p>
               <a href = "{{link}}" class = "spotifylink" target="_blank">View Profile</a>
-              
+              <p>Data provided by Spotify</p>
+              <img       src="{{ url_for('static', filename='images/Full_Logo_Green_RGB.svg') }}" alt="Spotify Logo" width="100">
               </div>
             </div>
         </div>
