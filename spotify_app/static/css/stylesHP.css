@@ -167,3 +167,9 @@ body {
   color: #ffffff;
   text-decoration: none;
 }
+.nav-link.disabled {
+  pointer-events: none;
+  color: #ccc; /* Gray out the text */
+  text-decoration: none;
+  cursor: not-allowed;
+}

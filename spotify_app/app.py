@@ -24,6 +24,13 @@ app.register_blueprint(playlist_blueprint)
 app.register_blueprint(artistsearch_blueprint)
 app.register_blueprint(findlyrics_blueprint)
 
+logging.basicConfig(
+    level=logging.INFO,  # Log level: DEBUG, INFO, WARNING, ERROR, CRITICAL
+    format="%(asctime)s - %(levelname)s - %(message)s",  # Log format
+    handlers=[
+        logging.StreamHandler(),  # Print logs to console
+    ]
+)
 
 
 
@@ -60,21 +67,36 @@ def get_userdata():
 def index():
     # print("Inside index route")
     # Check if the user is logged in (i.e., if 'access_token' is in the session)
-    logged_in = 'access_token' in session
+    # logged_in = 'access_token' in session
     
 
+    # if logged_in:
+    #     if 'expires_at' in session and datetime.datetime.now().timestamp() > session['expires_at']:
+    #         # token has expired-- refresh it
+    #         return redirect('/refresh_token')
+    #     country, link, name, followers, profilepic = get_userdata()
+
+    # else:
+    #     country = None
+    #     link = None
+    #     name = None
+    #     followers = None
+    #     profilepic = None
+    logged_in = 'access_token' in session
     if logged_in:
         if 'expires_at' in session and datetime.datetime.now().timestamp() > session['expires_at']:
-            # token has expired-- refresh it
+            logging.info("Access token expired. Redirecting to refresh.")
             return redirect('/refresh_token')
         country, link, name, followers, profilepic = get_userdata()
 
+        if not all([country, link, name, followers, profilepic]):
+            logging.error("Failed to fetch user data. Clearing session and showing homepage.")
+            session.clear()
+            logged_in = False #Mark them as logged out
     else:
-        country = None
-        link = None
-        name = None
-        followers = None
-        profilepic = None
+        #User is not logged in
+        country, link, name, followers, profilepic = None, None, None, None, None
+
     return render_template('homepage.html', logged_in = logged_in, country = country, link = link, name = name, followers = followers, profilepic = profilepic)
 
 
