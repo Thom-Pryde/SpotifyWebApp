@@ -43,8 +43,13 @@ def findlyrics_api():
         logging.error("Failed to fetch currently playing track from Spotify.")
         return jsonify({'error': 'Could not fetch currently playing track.'}), 500
         #print("Artist Name:",artist_name)
-
-    genius= lg.Genius(GENIUS_CLIENT_ACCESS_TOKEN)
+   
+    # genius= lg.Genius(GENIUS_CLIENT_ACCESS_TOKEN)
+    genius = lg.Genius(
+        GENIUS_CLIENT_ACCESS_TOKEN,
+        user_agent="MyLyricsApp/1.0 (https://example.com)"  
+    )
+    
 
     try:
         song = genius.search_song(title=track_name, artist=artist_name)
