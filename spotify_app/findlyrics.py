@@ -5,6 +5,7 @@ import urllib.parse
 from spotify_app.auth import API_BASE_URL,GENIUS_CLIENT_ACCESS_TOKEN,GENIUS_CLIENT_ID
 import lyricsgenius as lg
 import logging
+import platform
 
 findlyrics_blueprint = Blueprint('findlyrics', __name__)
 
@@ -46,7 +47,9 @@ def findlyrics_api():
    
     # genius= lg.Genius(GENIUS_CLIENT_ACCESS_TOKEN)
     #proxy = {"http": "http://103.25.155.233:83","https": "https://103.25.155.233:83"}
-    user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36"
+    #user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36"
+    user_agent = f"Mozilla/5.0 ({platform.system()} {platform.release()}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36"
+
     genius = lg.Genius(GENIUS_CLIENT_ACCESS_TOKEN,user_agent=user_agent)
     
     try:
