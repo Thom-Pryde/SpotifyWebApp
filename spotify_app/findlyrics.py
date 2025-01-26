@@ -47,10 +47,8 @@ def findlyrics_api():
     # genius= lg.Genius(GENIUS_CLIENT_ACCESS_TOKEN)
     #proxy = {"http": "http://103.25.155.233:83","https": "https://103.25.155.233:83"}
     user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36"
-    #print(genius._session.headers)
     genius = lg.Genius(GENIUS_CLIENT_ACCESS_TOKEN,user_agent)
     
-
     try:
         song = genius.search_song(title=track_name, artist=artist_name)
         if song and song.lyrics:
@@ -62,6 +60,12 @@ def findlyrics_api():
     except Exception as e:
         logging.error(f"Error while searching for lyrics: {e}")
         return jsonify({'error': 'An error occurred while fetching lyrics.'}), 500
+
+
+
+
+
+
 
 
 # @findlyrics_blueprint.route('/test_genius_api')
