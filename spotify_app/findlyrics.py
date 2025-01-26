@@ -49,8 +49,11 @@ def findlyrics_api():
     #proxy = {"http": "http://103.25.155.233:83","https": "https://103.25.155.233:83"}
     #user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36"
     user_agent = f"Mozilla/5.0 ({platform.system()} {platform.release()}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36"
+    proxy = {
+        "http": "47.251.122.81:8888",  # Replace with a valid proxy IP and port
+    }
 
-    genius = lg.Genius(GENIUS_CLIENT_ACCESS_TOKEN,user_agent=user_agent)
+    genius = lg.Genius(GENIUS_CLIENT_ACCESS_TOKEN,user_agent=user_agent,proxy=proxy)
     
     try:
         song = genius.search_song(title=track_name, artist=artist_name)
