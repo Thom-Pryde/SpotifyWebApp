@@ -44,36 +44,42 @@ def findlyrics_api():
         logging.error("Failed to fetch currently playing track from Spotify.")
         return jsonify({'error': 'Could not fetch currently playing track.'}), 500
         #print("Artist Name:",artist_name)
-   
-    user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
-    headers = {
-        "User-Agent": user_agent,
-        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
-        "Accept-Language": "en-US,en;q=0.9",
-        "Referer": "https://genius.com/",
-    }
 
-    genius = lg.Genius(
-        GENIUS_CLIENT_ACCESS_TOKEN,
-        user_agent=user_agent,
-        retries=3,  # Increased retries
-        timeout=10,  # Longer timeout
-    )
 
-    # Override headers for the internal session
-    genius._session.headers.update(headers)
-    
     try:
-        song = genius.search_song(title=track_name, artist=artist_name)
-        if song and song.lyrics:
-            lyrics = song.lyrics
-            return jsonify({'track_name': track_name, 'artist_name': artist_name, 'lyrics': lyrics})
+        # Use Lyrics.ovh API
+        lyrics_url = f"https://api.lyrics.ovh/v1/{artist_name}/{track_name}"
+        lyrics_response = requests.get(lyrics_url)
+        
+        if lyrics_response.status_code == 200:
+            lyrics = lyrics_response.json().get("lyrics", "No lyrics available.")
         else:
-            logging.warning(f"No lyrics found for: {track_name} by {artist_name}")
-            return jsonify({'track_name': track_name, 'artist_name': artist_name, 'lyrics': 'No lyrics available.'})
+            lyrics = "No lyrics available."
+        
+        return jsonify({
+            'track_name': track_name,
+            'artist_name': artist_name,
+            'lyrics': lyrics
+        })
     except Exception as e:
-        logging.error(f"Error while searching for lyrics: {e}")
+        logging.error(f"Error fetching lyrics: {e}")
         return jsonify({'error': 'An error occurred while fetching lyrics.'}), 500
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

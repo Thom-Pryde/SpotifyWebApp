@@ -6,8 +6,13 @@ const lyricload = async () => {
     const track_name = data.track_name;
     const artist_name = data.artist_name;
     let lyrics = data.lyrics;
-    lyrics = lyrics.replace(/\n/g, "<br>");
+    //lyrics = lyrics.replace(/\n/g, "<br>");
     // console.log(lyrics);
+
+    lyrics = lyrics.replace(/\n\n/g, "</p><p>"); //replace double new lines w para breaks
+    lyrics = lyrics.replace(/\n/g, "<br>");
+    lyrics = `<p>${lyrics}</p>`;
+
     if (data.error) {
       document.querySelector(
         "#lyrics-Container"
