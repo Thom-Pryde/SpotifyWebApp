@@ -43,10 +43,10 @@
             class="{{ 'nav-link disabled' if not logged_in else 'nav-link' }}"
             >Lyrics</a>
         </li>
-        <li>
+        <!-- <li>
           <a href="{{ '/artistsearch' if logged_in else '#' }}"
             class="{{ 'nav-link disabled' if not logged_in else 'nav-link' }}">Search</a>
-        </li>
+        </li> -->
         <li>
           <a href="{{ '/logout' if logged_in else '#' }}"
           class="nav-link {{ 'hidden' if not logged_in else '' }}">Log Out</a>

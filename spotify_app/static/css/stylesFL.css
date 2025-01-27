@@ -94,3 +94,10 @@ body {
   display: flex;
   gap: 15px;
 }
+
+#Reset-Button:hover {
+  background-color: #14833b;
+  transform: scale(1.1);
+  transition-property: transform;
+  transition-duration: 0.1s;
+}

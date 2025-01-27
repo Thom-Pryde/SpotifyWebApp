@@ -32,7 +32,17 @@
   </head>
   <body>
     <div class="top_container">
-      <h1 class="title">Your Top Songs</h1>
+      <div class="logo-title">
+        <h1 class="title">Your Top Songs</h1>
+        <img
+          class="spotify-logo"
+          src="{{ url_for('static', filename='images/Full_Logo_Green_RGB.svg') }}"
+          alt="Spotify Logo"
+          width="100"
+        />
+      </div>
+
+      <!-- <h1 class="title">Your Top Songs </h1> -->
 
       <div class="button-split">
         <div class="top_buttons_container">

@@ -16,46 +16,57 @@ function fetchTopSongs(time_range) {
     .then((data) => {
       const songList = data.items
         .map((item, index) => {
-          const albumpic = item.album.images[2]?.url || "";
+          const albumpic = item.album.images[1]?.url || "";
           const albumdate = item.album.release_date;
           const duration_ms = `${formatTime(item.duration_ms / 1000)}`;
           const popularity = `${item.popularity}%`;
           const albumlink = item.external_urls.spotify;
 
           return `
-          <div class="song_item"> 
+            <div class="song_item">
               <div class="album_info">
-                  <img class="album_img" src="${albumpic}" alt="Album cover">
-
-                  <div class="song_details">
-                      <p class="song_index">${index + 1}.</p>
-                      <p class="song_name">${item.name}</p> by 
-                      <p class="artists">${item.artists
-                        .map((artist) => artist.name)
-                        .join(", ")}</p>
+                <img
+                  class="album_img"
+                  src="${albumpic}"
+                  alt="Album cover"
+                />
+                <div class="song_details">
+                  <p class="song_index">${index + 1}.</p>
+                  <p class="song_name">${item.name}</p>
+                  by
+                  <p class="artists">
+                    ${item.artists.map((artist) => artist.name).join(", ")}
+                  </p>
+     
+                  <div class="song_extra_info">
+                    <div class="columns_date_duration">
+                      <span class="album-date">Release Date: ${albumdate}</span>
+                      <span class="duration">track length: ${duration_ms}</span>
+                    </div>
+          
+                    <div class="columns_popularity">
+                      <span class="popularity">Popularity: ${popularity} </span>
+                      <div class="i-button-container">
+                        <button class="i-button">i</button>
+                        <span class="i-show">
+                          The popularity is calculated by algorithm and is based, in the
+                          most part, on the total number of plays the track has had and
+                          how recent those plays are.
+                        </span>
+                      </div>
+                    </div>
                   </div>
-              </div>
-              <div class="song_extra_info">
-
-                <div class = "columns_date_duration">
-                  <span class="album-date">Release Date: ${albumdate}</span>
-                  <span class="duration">track length: ${duration_ms}</span>
-                </div>
-                
-                <div class = "columns_popularity">
-                  <span class="popularity">Popularity: ${popularity} </span> 
-                  <div class = "i-button-container">   
-                    <button class= "i-button" > i </button>
-                    <span class = "i-show"> The popularity is calculated by algorithm and is based, in the most part, on the total number of plays the track has had and how recent those plays are. </span>
+                  <div class="spotify_link">
+                    <a
+                      href="${albumlink}"
+                      target="_blank"
+                      >Listen on Spotify</a
+                    >
                   </div>
+
                 </div>
-
-
               </div>
-                <div class="spotify_link">
-                  <a href="${albumlink}" target="_blank">Listen on Spotify</a>
-                </div>
-          </div>
+            </div>
         `;
         })
         .join("");

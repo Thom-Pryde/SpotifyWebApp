@@ -61,10 +61,9 @@ body {
   color: #1db954;
   font-size: 55px;
   text-transform: uppercase;
-  display: flex;
-  justify-content: center;
+  /* display: flex;
+  justify-content: center; */
   font-weight: bold;
-  margin-bottom: 10px;
 }
 .toggle_buttons.active {
   color: #000000;
@@ -101,11 +100,22 @@ body {
 }
 
 .album_img {
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
-  border-radius: 8px;
+  width: 300px;
+  height: 300px;
+  object-fit: contain;
+  border-radius: 4px;
 }
+/* width: 80px;
+height: 80px;
+object-fit: cover;
+border-radius: 4px; */
+
+/* new */
+/* width: 300px;
+height: 300px;
+ width: 100%; 
+object-fit: contain;
+border-radius: 4px;  */
 
 .song_details {
   display: flex;
@@ -132,10 +142,14 @@ body {
 }
 
 .song_extra_info {
+  padding-top: 30px;
   display: flex;
   font-size: 15px;
   color: #777;
   gap: 120px;
+}
+.spotify_link {
+  padding-top: 15px;
 }
 
 .spotify_link a {
@@ -197,4 +211,13 @@ body {
 }
 .i-show {
   display: none;
+}
+.logo-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+.logo-title img {
+  align-self: center;
 }

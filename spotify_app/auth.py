@@ -29,8 +29,30 @@ API_BASE_URL = 'https://api.spotify.com/v1/'  # Spotify API base URL
 def login():
     # print(f"REDIRECT_URI: {REDIRECT_URI}")
     # Define the scope of permissions requested from Spotify
-    scope = 'playlist-read-private playlist-read-collaborative user-read-private user-library-read user-top-read user-read-playback-state user-read-recently-played user-read-currently-playing'
-    
+    #scope = 'playlist-read-private playlist-read-collaborative user-read-private user-library-read user-top-read user-read-playback-state user-read-recently-played user-read-currently-playing'
+    scope = 'user-read-private user-read-email user-read-currently-playing user-top-read'
+
+
+
+
+
+
+
+#playlist-read-private: Access to private playlists.
+
+#playlist-read-collaborative: Access to collaborative playlists.
+
+#user-library-read: Access to the user's saved tracks and albums.
+
+#user-read-playback-state: Access to the user's current playback state.
+
+#user-read-recently-played: Access to the user's recently played tracks.
+
+
+
+
+
+
     # Build the authorization URL with the necessary parameters
     params = {
         'client_id': CLIENT_ID,
