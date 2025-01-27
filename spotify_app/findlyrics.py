@@ -45,38 +45,35 @@ def findlyrics_api():
         return jsonify({'error': 'Could not fetch currently playing track.'}), 500
         #print("Artist Name:",artist_name)
    
+    user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
     headers = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36",
-    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
-    "Accept-Language": "en-US,en;q=0.5",
-    "Referer": "https://genius.com/"
+        "User-Agent": user_agent,
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+        "Accept-Language": "en-US,en;q=0.9",
+        "Referer": "https://genius.com/",
     }
-    proxy = {
-        "http": "http://82.102.10.253:80",  # Include protocol (http/https)
-        "https": "http://82.102.10.253:80"   # Use "http" for HTTPS proxies unless it's SSL-enabled
-    }
+
     genius = lg.Genius(
         GENIUS_CLIENT_ACCESS_TOKEN,
-        user_agent=headers["User-Agent"],
-        headers=headers,  # Pass headers explicitly
-        proxy=proxy
+        user_agent=user_agent,
+        retries=3,  # Increased retries
+        timeout=10,  # Longer timeout
     )
+
+    # Override headers for the internal session
+    genius._session.headers.update(headers)
+    
     try:
         song = genius.search_song(title=track_name, artist=artist_name)
         if song and song.lyrics:
             lyrics = song.lyrics
-            return jsonify({'track_name':track_name,'artist_name': artist_name, 'lyrics': lyrics})
+            return jsonify({'track_name': track_name, 'artist_name': artist_name, 'lyrics': lyrics})
         else:
             logging.warning(f"No lyrics found for: {track_name} by {artist_name}")
             return jsonify({'track_name': track_name, 'artist_name': artist_name, 'lyrics': 'No lyrics available.'})
     except Exception as e:
-        logging.error(f"Error: {e}")
-        return jsonify({'error': str(e)}), 500
-
-
-
-
-
+        logging.error(f"Error while searching for lyrics: {e}")
+        return jsonify({'error': 'An error occurred while fetching lyrics.'}), 500
 
 
 
