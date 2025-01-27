@@ -45,16 +45,22 @@ def findlyrics_api():
         return jsonify({'error': 'Could not fetch currently playing track.'}), 500
         #print("Artist Name:",artist_name)
    
-    # genius= lg.Genius(GENIUS_CLIENT_ACCESS_TOKEN)
-    #proxy = {"http": "http://103.25.155.233:83","https": "https://103.25.155.233:83"}
-    #user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36"
-    user_agent = f"Mozilla/5.0 ({platform.system()} {platform.release()}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36"
-    proxy = {
-        "http": "47.251.122.81:8888",  # Replace with a valid proxy IP and port
+    headers = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+    "Accept-Language": "en-US,en;q=0.5",
+    "Referer": "https://genius.com/"
     }
-
-    genius = lg.Genius(GENIUS_CLIENT_ACCESS_TOKEN,user_agent=user_agent,proxy=proxy)
-    
+    proxy = {
+        "http": "http://82.102.10.253:80",  # Include protocol (http/https)
+        "https": "http://82.102.10.253:80"   # Use "http" for HTTPS proxies unless it's SSL-enabled
+    }
+    genius = lg.Genius(
+        GENIUS_CLIENT_ACCESS_TOKEN,
+        user_agent=headers["User-Agent"],
+        headers=headers,  # Pass headers explicitly
+        proxy=proxy
+    )
     try:
         song = genius.search_song(title=track_name, artist=artist_name)
         if song and song.lyrics:
@@ -64,8 +70,43 @@ def findlyrics_api():
             logging.warning(f"No lyrics found for: {track_name} by {artist_name}")
             return jsonify({'track_name': track_name, 'artist_name': artist_name, 'lyrics': 'No lyrics available.'})
     except Exception as e:
-        logging.error(f"Error while searching for lyrics: {e}")
-        return jsonify({'error': 'An error occurred while fetching lyrics.'}), 500
+        logging.error(f"Error: {e}")
+        return jsonify({'error': str(e)}), 500
+
+
+
+
+
+
+
+
+
+
+
+    # genius= lg.Genius(GENIUS_CLIENT_ACCESS_TOKEN)
+    #proxy = {"http": "http://103.25.155.233:83","https": "https://103.25.155.233:83"}
+    #user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36"
+
+
+    # user_agent = f"Mozilla/5.0 ({platform.system()} {platform.release()}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36"
+    # proxy = {
+    #     "http": "http://47.251.122.81:8888", 
+    #     "https": "http://47.251.122.81:8888"
+    # }
+
+    # genius = lg.Genius(GENIUS_CLIENT_ACCESS_TOKEN,user_agent=user_agent,proxy=proxy)
+    
+    # try:
+    #     song = genius.search_song(title=track_name, artist=artist_name)
+    #     if song and song.lyrics:
+    #         lyrics = song.lyrics
+    #         return jsonify({'track_name':track_name,'artist_name': artist_name, 'lyrics': lyrics})
+    #     else:
+    #         logging.warning(f"No lyrics found for: {track_name} by {artist_name}")
+    #         return jsonify({'track_name': track_name, 'artist_name': artist_name, 'lyrics': 'No lyrics available.'})
+    # except Exception as e:
+    #     logging.error(f"Error while searching for lyrics: {e}")
+    #     return jsonify({'error': 'An error occurred while fetching lyrics.'}), 500
 
 
 
