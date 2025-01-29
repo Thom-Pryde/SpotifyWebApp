@@ -30,7 +30,7 @@ def login():
     # print(f"REDIRECT_URI: {REDIRECT_URI}")
     # Define the scope of permissions requested from Spotify
     #scope = 'playlist-read-private playlist-read-collaborative user-read-private user-library-read user-top-read user-read-playback-state user-read-recently-played user-read-currently-playing'
-    scope = 'user-read-private user-read-email user-read-currently-playing user-top-read'
+    scope = 'user-read-private user-read-email user-read-currently-playing user-top-read user-read-recently-played'
 
 
 

@@ -76,9 +76,9 @@ a.get_started {
   justify-content: center;
   padding-top: 100px;
 }
-.left_div {
+/* .left_div {
   width: 50vw;
-}
+} */
 .right_div {
   /* width: 50vw; */
   display: flex;
@@ -158,17 +158,30 @@ a.get_started {
   color: #fff;
   text-align: center;
 }
+
 html,
 body {
-  height: 100%; /* Set both to fill the entire viewport height */
-  margin: 0; /* Remove any default margins */
-  padding: 0; /* Remove any default padding */
+  margin: 0;
+  padding: 0;
 }
-.right-aligned {
+
+main {
+  min-height: 100vh;
+  padding-bottom: 30px; /* Prevent content from sticking to the bottom */
+}
+
+/* html,
+body {
+  height: 100%; 
+  margin: 0;
+  padding: 0;
+} */
+
+/* .right-aligned {
   align-self: flex-start;
   margin-left: auto;
   margin-right: 30px;
-}
+} */
 .spotifylink {
   color: #ffffff;
   text-decoration: none;
@@ -187,4 +200,62 @@ body {
 }
 .spotify-navbar-logo {
   width: 100px;
+}
+
+.track_info {
+  color: #fff;
+  text-align: center;
+}
+
+.Header {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.recently-palyed-div {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.by {
+  font-size: 0.9rem;
+  color: #a4a4a4;
+  margin: 5px 0;
+}
+
+.track-details {
+  text-align: center;
+  line-height: 1.5;
+  color: white;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+.track_info {
+  color: white;
+}
+.track_name {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin: 0;
+}
+.artist_names {
+  font-size: 1.1rem;
+  font-style: italic;
+  margin: 0;
+}
+
+.played_at {
+  font-size: 0.9rem;
+  color: #a4a4a4;
+}
+.recently-palyed-div ul {
+  display: flex;
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }

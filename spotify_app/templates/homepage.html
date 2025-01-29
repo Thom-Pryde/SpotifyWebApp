@@ -43,10 +43,10 @@
             class="{{ 'nav-link disabled' if not logged_in else 'nav-link' }}"
             >Lyrics</a>
         </li>
-        <!-- <li>
+        <li>
           <a href="{{ '/artistsearch' if logged_in else '#' }}"
             class="{{ 'nav-link disabled' if not logged_in else 'nav-link' }}">Search</a>
-        </li> -->
+        </li>
         <li>
           <a href="{{ '/logout' if logged_in else '#' }}"
           class="nav-link {{ 'hidden' if not logged_in else '' }}">Log Out</a>
@@ -61,26 +61,51 @@
     <!--logged_in = logged_in, name = name, followers = followers, profilepic = profilepic-->
     <main>
       <div class="main_overall_page">
-        <!-- <div class = "left_div"> 
+        {% if logged_in %}
+        <!-- 'played_at': played_at,
+        'track_name': track_name,
+        'artist_names': artist_names,
+        'album_image': album_image, -->
 
-        </div> -->
-        <div class="right_div {% if logged_in %}right-aligned{% endif %}">
-          {% if logged_in %}
+          <div class ="recently-palyed-div"> 
+            <h2 class ="Header">Recently Played</h2>
+            <ul>
+              {% for track in tracks %}
+              <li class = "track-details">
+                <img src="{{ track['album_image'] }}" class = "album_image" alt = "Album Image">
+                <div class = "track_info">
+                  <p class = "track_name">{{ track['track_name'] }}</p>
+                  <p class = "by">by</p>
+                  <p class = "artist_names">{{ track['artist_names'] }}</p>
+                  <p class = "played_at">{{ track['played_at'] }}</p>
+                </div>
+
+              </li>
+              {% endfor %}
+
+            </ul>
+
+            
+            
+          </div> 
+
+
+          <!-- <div class="right_div right-aligned">
             <div class = "right_div_content">
               <h1 class = "welcome">Welcome to Wrapify, {{ name }}!</h1>
               <div class = "profile_info">
-              <img src="{{ profilepic }}" class = "profile_pic" alt = "Profile Picture">
-             <div class = "profile_text">
-              <h2 class = "profile_name">{{ name }}</h2>
-              <p class = "followers">{{ followers }} followers</p>
-              <p class = "country">Location: {{ country }} </p>
-              <a href = "{{link}}" class = "spotifylink" target="_blank">View Profile</a>
-              <p>Data provided by Spotify</p>
-              <img       src="{{ url_for('static', filename='images/Full_Logo_Green_RGB.svg') }}" alt="Spotify Logo" width="100">
+                <img src="{{ profilepic }}" class = "profile_pic" alt = "Profile Picture">
+                <div class = "profile_text">
+                  <h2 class = "profile_name">{{ name }}</h2>
+                  <p class = "followers">{{ followers }} followers</p>
+                  <p class = "country">Location: {{ country }} </p>
+                  <a href = "{{link}}" class = "spotifylink" target="_blank">View Profile</a>
+                  <p>Data provided by Spotify</p>
+                  <img       src="{{ url_for('static', filename='images/Full_Logo_Green_RGB.svg') }}" alt="Spotify Logo" width="100">
+                </div>
               </div>
             </div>
-        </div>
-      
+          </div> -->
         {% else %}
         <div class="welcome-container">
           <h1 class="welcome">Your Music Journey!</h1>
@@ -89,7 +114,6 @@
           <a class ="below-welcome"href="/login">Get Started</a> 
         </div>
       {% endif %}
-      </div>
     </main>
   </body>
 </html>
