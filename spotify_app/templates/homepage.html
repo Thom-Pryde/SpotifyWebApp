@@ -68,7 +68,7 @@
         'album_image': album_image, -->
 
           <div class ="recently-palyed-div"> 
-            <h2 class ="Header">Recently Played</h2>
+            <h2 class ="Header">Your Recently Played</h2>
             <ul>
               {% for track in tracks %}
               <li class = "track-details">
@@ -79,14 +79,9 @@
                   <p class = "artist_names">{{ track['artist_names'] }}</p>
                   <p class = "played_at">{{ track['played_at'] }}</p>
                 </div>
-
               </li>
               {% endfor %}
-
             </ul>
-
-            
-            
           </div> 
 
 

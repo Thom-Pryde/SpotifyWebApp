@@ -118,11 +118,12 @@ def get_recently_played():
 
 
 def format_timestamp(iso_timestamp):
-    # Slice and format the ISO string manually
     date_part, time_part = iso_timestamp.split("T")
-    time_part = time_part.split(".")[0]  # Remove milliseconds
+    time_part = time_part.split(".")[0] 
     formatted_time = datetime.datetime.strptime(f"{date_part} {time_part}", "%Y-%m-%d %H:%M:%S")
-    return formatted_time.strftime("%b %d, %Y %I:%M %p") 
+    hour_24 = formatted_time.strftime("%H:%M") 
+    am_pm = "AM" if formatted_time.hour < 12 else "PM"
+    return f"{formatted_time.strftime('%b %dth, at')} {hour_24} {am_pm}" 
  #jan 29 2025 08:58 PM
 
 
