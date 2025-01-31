@@ -58,36 +58,18 @@
         </a>
       </div>
     </nav>
-    <!--logged_in = logged_in, name = name, followers = followers, profilepic = profilepic-->
     <main>
-      <div class="main_overall_page">
+      <div  class="Top-half {% if not logged_in %}column-layout{% endif %}">
         {% if logged_in %}
-        <!-- 'played_at': played_at,
-        'track_name': track_name,
-        'artist_names': artist_names,
-        'album_image': album_image, -->
-
-          <div class ="recently-palyed-div"> 
-            <h2 class ="Header">Your Recently Played</h2>
-            <ul>
-              {% for track in tracks %}
-              <li class = "track-details">
-                <img src="{{ track['album_image'] }}" class = "album_image" alt = "Album Image">
-                <div class = "track_info">
-                  <p class = "track_name">{{ track['track_name'] }}</p>
-                  <p class = "by">by</p>
-                  <p class = "artist_names">{{ track['artist_names'] }}</p>
-                  <p class = "played_at">{{ track['played_at'] }}</p>
-                </div>
-              </li>
-              {% endfor %}
-            </ul>
-          </div> 
-
-
-          <!-- <div class="right_div right-aligned">
+          <div class="intro-writing">
+            <p>Wrapify is your personal hub for tracking your music journey through Spotify. Discover your favorite songs, view recently played tracks, and gain insights into your listening habits.</p>
+            <p>Navigate through your top songs, search for lyrics, and explore new music to add to your playlists!</p>
+          </div>
+          <div class="right_div">
             <div class = "right_div_content">
-              <h1 class = "welcome">Welcome to Wrapify, {{ name }}!</h1>
+              <!-- <h1 class="greeting">Welcome<br>{{ name }}</h1> -->
+              <span class="greeting">Welcome</span>
+              <span class="user-name">{{ name }}</span>
               <div class = "profile_info">
                 <img src="{{ profilepic }}" class = "profile_pic" alt = "Profile Picture">
                 <div class = "profile_text">
@@ -100,14 +82,59 @@
                 </div>
               </div>
             </div>
-          </div> -->
-        {% else %}
+          </div>
+      </div>
+      <div class ="recently-palyed-div"> 
+        <h2 class ="Header">Your Recently Played</h2>
+        <ul>
+          {% for track in tracks %}
+          <li class = "track-details">
+            <img src="{{ track['album_image'] }}" class = "album_image" alt = "Album Image">
+            <div class = "track_info">
+              <p class = "track_name">{{ track['track_name'] }}</p>
+              <p class = "by">by</p>
+              <p class = "artist_names">{{ track['artist_names'] }}</p>
+              <p class = "played_at">{{ track['played_at'] }}</p>
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+      </div> 
+      {% else %}
+      <div class="column-intro">
         <div class="welcome-container">
-          <h1 class="welcome">Your Music Journey!</h1>
+          <h1 class="welcome-title">Your Music Journey!</h1>
           <h3 class="welcome-text">
             Explore your top songs, find lyrics for what you're listening to right now, and discover new tracks to add to your playlists. </h3>
           <a class ="below-welcome"href="/login">Get Started</a> 
         </div>
+      </div>
+
+      <!-- <div class="intro-writing">
+        <h2>What is Wrapify?</h2>
+        <p>Wrapify is your gateway to visualizing your music habits through Spotify. Whether you want to explore your listening history or uncover new tracks, we’ve got you covered.</p>
+
+        <h3>Why Use Wrapify?</h3>
+        <ul class="benefits-list">
+          <li><strong>Recently Played:</strong> View your last few tracks and never miss a beat.</li>
+          <li><strong>Top Songs:</strong> Analyze your top songs to see what’s defining your journey.</li>
+          <li><strong>Lyrics Finder:</strong> Instantly find lyrics for any song you love.</li>
+          <li><strong>Discover Artists:</strong> Explore new and old artists to broaden your playlists.</li>
+        </ul>
+
+        <h3>How to Get Started</h3>
+        <p>To start, simply log in using your Spotify account. Once logged in, you'll be able to:</p>
+        <ul class="start-list">
+          <li>See your most recently played songs right on the homepage.</li>
+          <li>Explore your top songs, search for lyrics, and discover new tracks.</li>
+          <li>Receive personalized insights into your listening behavior.</li>
+        </ul>
+
+        <p class="final">Ready to elevate your music experience? Log in and let the journey begin!</p>
+      </div> -->
+
+
+    
       {% endif %}
     </main>
   </body>
