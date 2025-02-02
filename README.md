@@ -1,4 +1,4 @@
-# Spotify Web App (Under Development - Local Only)
+# Spotify Web App (Under Development)
 
 # Welcome to Wrapify! 🎶
 
